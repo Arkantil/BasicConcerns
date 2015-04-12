@@ -5,14 +5,14 @@ class mailForm {
 	private $SecurityToken = "pass";
 	private $Betreff = 0;
 	private $Message = 0;
-	private $mailData = array(	"host" =>"smtp.host.de", 
+	private $MailData = array(	"host" =>"smtp.host.de", 
 					"username" => "USERNAME", 
 					"password" => "PASSWORD", 
 					"from" => "e@mail.de",
 					"fromName" => "NAME",
 					"toAdress" => "adress@mail.com");
 	#Adding CC Recipient List.
-	private $CcRecipients = array("first", "second", "third");
+	private $CcRecipients = array("first@email.com", "second@email.com", "third@email.com");
 
 	// Initialize the class
 	public function __construct () {
@@ -61,13 +61,13 @@ class mailForm {
 		$mail->SMTPDebug = 2;
 		$mail->SMTPAuth = true;
 		$mail->SMTPSecure = "tls";  
-		$mail->Host = $this->mailData['host'];
+		$mail->Host = $this->MailData['host'];
 		$mail->Port = 587;
-		$mail->Username = $this->mailData['username'];
-		$mail->Password = $this->mailData['password'];
-		$mail->From = $this->mailData['from'];
-		$mail->FromName = $this->mailData['fromName'];
-		$mail->addAddress($this->mailData['toAdress']);
+		$mail->Username = $this->MailData['username'];
+		$mail->Password = $this->MailData['password'];
+		$mail->From = $this->MailData['from'];
+		$mail->FromName = $this->MailData['fromName'];
+		$mail->addAddress($this->MailData['toAdress']);
 		
 		#Add CC Recipients
 		foreach ($this->CcRecipients as $value) {
